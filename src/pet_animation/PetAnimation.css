@@ -1,0 +1,44 @@
+.eating {
+  animation: eatAnimation 2s linear;
+}
+
+.playing {
+  animation: playAnimation 2s linear;
+}
+
+.sleeping {
+  animation: sleepAnimation 2s linear;
+}
+
+@keyframes eatAnimation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes playAnimation {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sleepAnimation {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+  }
+
+  25%,
+  75% {
+    transform: scale(1.1);
+  }
+}

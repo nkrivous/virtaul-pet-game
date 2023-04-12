@@ -1,0 +1,18 @@
+.game_over__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #0d1216;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  vertical-align: middle;
+  transition: background-color 0.1s linear;
+}
+
+.game_over__button:hover {
+  background-color: rgba(57, 76, 96, 0.15);
+}
