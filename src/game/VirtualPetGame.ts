@@ -4,6 +4,12 @@ import { PetUI } from "../ui/PetUI";
 import { getRandomFromList } from "../utils/common";
 import { GameOverUI } from "../ui/GameOverUI";
 
+import alien from "../assets/alien";
+import creature from "../assets/creature";
+import robot from "../assets/robot";
+
+import sun from "../assets/sun";
+
 export enum GameState {
   MainMenu,
   InGame,
@@ -53,6 +59,10 @@ export class VirtualPetGame {
 
   private async fetchVirtualPet(appearanceDescription: string) {
     let svg: string;
+    if (/[\s\S]*IMPORTANTSTART[\s\S]*sun[\s\S]*/.test(appearanceDescription)) {
+      return sun;
+    }
+
     try {
       const svgRezult = await fetch(import.meta.env.VITE_SVG_CREATE_URL, {
         method: "POST",
@@ -68,8 +78,8 @@ export class VirtualPetGame {
       }
       svg = svgMatches[0];
     } catch (error) {
-      const fileName = getRandomFromList(["alien", "creature", "robot"]);
-      svg = (await import(`../assets/${fileName}`)).default;
+      const fileName = getRandomFromList([alien, creature, robot]);
+      svg = fileName;
     }
     return svg;
   }
