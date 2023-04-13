@@ -47,7 +47,7 @@
   background-color: rgba(57, 76, 96, 0.15);
 }
 
-.pet_ui__button:disabled {
+.button:disabled {
   background-color: rgba(57, 76, 96, 0.1);
   opacity: 0.5;
   cursor: not-allowed;

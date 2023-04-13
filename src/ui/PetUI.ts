@@ -16,6 +16,7 @@ export class PetUI {
     const petContainer = document.createElement("div");
     petContainer.className = "pet_ui__pet_container";
 
+    this.renderTitle(petContainer);
     this.renderPetImageContainer(petContainer);
     this.renderActionButtons(petContainer);
     this.renderStatistics(petContainer);
@@ -26,6 +27,12 @@ export class PetUI {
   public update() {
     this.updateLevel();
     this.updateStatistics();
+  }
+
+  private renderTitle(petContainer: HTMLElement) {
+    const title = document.createElement('h1');
+    title.textContent = 'Your Pet';
+    petContainer.appendChild(title);
   }
 
   private renderPetImageContainer(petContainer: HTMLElement) {
@@ -63,8 +70,8 @@ export class PetUI {
     actionsContainer.className = "pet_ui__actions_container";
 
     const feedButton = document.createElement("button");
-    feedButton.className = "pet_ui__button";
     feedButton.textContent = "🍴 Feed";
+    feedButton.classList.add("button", "secondary");
     feedButton.addEventListener("click", async () => {
       this.disableActions(actionsContainer);
       this.pet!.feed();
@@ -75,8 +82,8 @@ export class PetUI {
     actionsContainer.appendChild(feedButton);
 
     const playButton = document.createElement("button");
-    playButton.className = "pet_ui__button";
     playButton.textContent = "⚽ Play";
+    playButton.classList.add("button", "secondary");
     playButton.addEventListener("click", async () => {
       this.disableActions(actionsContainer);
       this.pet!.play();
@@ -87,8 +94,8 @@ export class PetUI {
     actionsContainer.appendChild(playButton);
 
     const sleepButton = document.createElement("button");
-    sleepButton.className = "pet_ui__button";
     sleepButton.textContent = "💤 Sleep";
+    sleepButton.classList.add("button", "secondary");
     sleepButton.addEventListener("click", async () => {
       this.disableActions(actionsContainer);
       this.pet!.sleep();

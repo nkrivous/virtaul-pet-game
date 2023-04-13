@@ -25,12 +25,13 @@ export class MainMenuUI {
 
   private composePetSelectionContainer(): HTMLElement {
     const title = document.createElement("h1");
-    title.textContent = "Tamagotchi Game";
+    title.textContent = "Virtual Pet";
     this.menuElement.appendChild(title);
 
     const subtitle = document.createElement("p");
-    subtitle.className = "main_menu__subtitle";
-    subtitle.textContent = "Choose your pet";
+    subtitle.classList.add("body");
+    subtitle.textContent = "Choose your pet from the options below.";
+    subtitle.classList.add("paragraph");
     this.menuElement.appendChild(subtitle);
 
     const petSelectionContainer = document.createElement("div");
@@ -58,13 +59,13 @@ export class MainMenuUI {
   private composeRandomizerContainer(): HTMLElement {
     const randomizerContainer = document.createElement("div");
 
-    const randomizerTitle = document.createElement("h2");
-    randomizerTitle.textContent = "Randomizer";
+    const randomizerTitle = document.createElement("h3");
+    randomizerTitle.textContent = "Custom Pet";
     randomizerContainer.appendChild(randomizerTitle);
 
     const subtitle = document.createElement("p");
-    subtitle.className = "main_menu__subtitle";
-    subtitle.textContent = "Or create a unique appearance";
+    subtitle.classList.add("paragraph");
+    subtitle.textContent = "Alternatively, write a few lines describing the unique apperance of your pet. ";
     randomizerContainer.appendChild(subtitle);
 
     const randomizerForm = document.createElement("form");
@@ -92,8 +93,9 @@ export class MainMenuUI {
     randomizerInput.placeholder = "Rainbow on forehead";
 
     const randomizerButton = document.createElement("button");
-    randomizerButton.className = "main_menu__randomizer_submit";
+    randomizerButton.classList.add("button", "secondary");
     randomizerButton.textContent = "Imagine";
+
     randomizerForm.appendChild(randomizerInput);
     randomizerForm.appendChild(randomizerButton);
     randomizerContainer.appendChild(randomizerForm);

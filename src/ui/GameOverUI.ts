@@ -7,15 +7,20 @@ export class GameOverUI {
 
     const gameOverTitle = document.createElement("h1");
     gameOverTitle.textContent = "Game Over";
-    this.appElement.appendChild(gameOverContainer);
+    gameOverContainer.appendChild(gameOverTitle);
 
-    const gameOverMessage = document.createElement("p");
-    gameOverMessage.textContent = "Your pet has died.";
-    gameOverContainer.appendChild(gameOverMessage);
+    const message = document.createElement("p");
+    message.classList.add("paragraph");
+    message.textContent = "Your pet has passed away unfortunately ):";
+    gameOverContainer.appendChild(message);
+
+    const gif = document.createElement("img");
+    gif.src="https://media0.giphy.com/media/BEob5qwFkSJ7G/giphy.gif";
+    gameOverContainer.appendChild(gif);
 
     const restartButton = document.createElement("button");
-    restartButton.classList.add("game_over__button");
     restartButton.textContent = "Restart";
+    restartButton.classList.add("button", "secondary");
     restartButton.addEventListener("click", () => {
       this.onRestart();
     });
