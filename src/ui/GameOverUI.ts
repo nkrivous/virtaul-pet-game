@@ -1,3 +1,5 @@
+import './GameOverUI.css';
+
 export class GameOverUI {
   constructor(private appElement: HTMLElement, private onRestart: () => void) {}
 
@@ -20,7 +22,7 @@ export class GameOverUI {
 
     const restartButton = document.createElement("button");
     restartButton.textContent = "Restart";
-    restartButton.classList.add("button", "secondary");
+    restartButton.classList.add("button", "secondary", "game_over__restart_button");
     restartButton.addEventListener("click", () => {
       this.onRestart();
     });

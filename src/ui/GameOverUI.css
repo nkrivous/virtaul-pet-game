@@ -16,3 +16,7 @@
 .game_over__button:hover {
   background-color: rgba(57, 76, 96, 0.15);
 }
+
+.game_over__restart_button {
+  margin-top: 1em;
+}

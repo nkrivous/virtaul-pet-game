@@ -182,7 +182,7 @@ export class PetUI {
 
   private renderDesignInteractionButton(petContainer: HTMLElement) {
     const designInteractionButton = document.createElement("button");
-    designInteractionButton.className = "pet_ui__di_button";
+    designInteractionButton.classList.add("button", "secondary");
     designInteractionButton.textContent = "🎨 Add to design";
     designInteractionButton.addEventListener("click", async () => {
       try {
