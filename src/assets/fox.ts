@@ -1,5 +1,4 @@
-export default `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="150" height="150" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+export default `<svg width="150" height="150" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="35" fill="orange" stroke="#000" stroke-width="2" />
   <path d="m30 30q-5-15 15-5" fill="orange" stroke="#000" stroke-width="2" />
   <path d="m70 30q5-15-15-5" fill="orange" stroke="#000" stroke-width="2" />

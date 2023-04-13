@@ -19,5 +19,8 @@
         "typescript"
     ],
     "author": "nkrivous",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "vite-plugin-css-injected-by-js": "^3.1.0"
+    }
 }

@@ -2,15 +2,31 @@ import { PetAnimations } from "../pet_animation/PetAnimation";
 import { Pet } from "../entities/Pet";
 import star from "../assets/star";
 import "./PetUI.css";
+import { getDesignInteraction } from "../canva_api/design_interaction";
+import { DesignInteraction } from "../canva_api/design_interaction.d";
+import { ImageType, getImageFromElement } from "../utils/image2base64";
 
+type AppElementData = {
+  dataUrl: string;
+  width: number;
+  height: number;
+};
+
+type UIState = AppElementData;
 export class PetUI {
   petSvgClassName = "pet_ui__pet_svg";
+  di: DesignInteraction<any>;
 
   constructor(
     private appElement: HTMLElement,
     private pet: Pet,
     private petSvg: string
-  ) {}
+  ) {
+    this.di = getDesignInteraction();
+    this.di.registerRenderAppElement((data: UIState) => {
+      return [{ type: "IMAGE", ...data, top: 0, left: 0 }];
+    });
+  }
 
   render() {
     const petContainer = document.createElement("div");
@@ -19,6 +35,7 @@ export class PetUI {
     this.renderPetImageContainer(petContainer);
     this.renderActionButtons(petContainer);
     this.renderStatistics(petContainer);
+    this.renderDesignInteractionButton(petContainer);
 
     this.appElement.replaceChildren(petContainer);
   }
@@ -154,6 +171,50 @@ export class PetUI {
     statisticsContainer.appendChild(experienceDisplay);
 
     petContainer.appendChild(statisticsContainer);
+  }
+
+  private renderDesignInteractionButton(petContainer: HTMLElement) {
+    const designInteractionButton = document.createElement("button");
+    designInteractionButton.className = "pet_ui__di_button";
+    designInteractionButton.textContent = "🎨 Add to design";
+    designInteractionButton.addEventListener("click", async () => {
+      try {
+        const image = await getImageFromElement({
+          element: document.querySelector(
+            `.${this.petSvgClassName}`
+          ) as HTMLElement,
+
+          type: ImageType.SVG,
+        });
+
+        this.di.addNativeElement({
+          type: "IMAGE",
+          dataUrl: image.base64Encode(),
+          top: 100,
+          left: 100,
+          width: image.width,
+          height: image.height,
+        });
+
+        const image2 = await getImageFromElement({
+          element: document.querySelector(`.pet_ui__star`) as HTMLElement,
+
+          type: ImageType.SVG,
+        });
+
+        this.di.addNativeElement({
+          type: "IMAGE",
+          dataUrl: image2.base64Encode(),
+          top: 100,
+          left: 100 + (image.width / 5) * 4,
+          width: image2.width,
+          height: image2.height,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    });
+    petContainer.appendChild(designInteractionButton);
   }
 
   private enableActions(actionsContainer: HTMLElement) {

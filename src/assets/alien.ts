@@ -1,5 +1,4 @@
-export default `<?xml version="1.0" encoding="UTF-8"?>
-<svg id="petAvatar" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+export default `<svg id="petAvatar" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
     <!-- Head -->
     <rect x="35" y="35" width="80" height="80" fill="#FFC107" stroke="#000000" stroke-width="2" rx="20" ry="20" />
     <!-- Left ear -->
