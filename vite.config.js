@@ -11,14 +11,16 @@ module.exports = {
       output: {
         entryFileNames: `assets/[name].js`,
         chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`,
-      },
-    },
+        assetFileNames: `assets/[name].[ext]`
+      }
+    }
   },
   server: {
     open: true,
     port: 3000,
     https: true,
   },
-  plugins: [cssInjectedByJsPlugin()],
+  plugins: [
+    cssInjectedByJsPlugin()
+  ]
 };
